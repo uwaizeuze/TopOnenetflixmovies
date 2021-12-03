@@ -1,0 +1,14 @@
+.list__container {
+  font-size: 25px;
+  text-transform: capitalize;
+  background-image: linear-gradient(45deg, #a02e58, transparent);
+  color: beige;
+}
+.list__title {
+}
+.list__username {
+  list-style: none;
+}
+.list__password {
+  list-style: none;
+}
