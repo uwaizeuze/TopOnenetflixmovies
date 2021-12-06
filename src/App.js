@@ -1,63 +1,35 @@
-import React, { useState } from "react";
-import List from "./Components/List";
-import LoginForm from "./Components/LoginForm";
-import Navbar from "./Components/Navbar";
+import React, { useState } from 'react';
+
+import AddUser from './components/AddUser';
+import ListUser from './components/ListUser';
+import Navbar from './components/Navbar';
 
 function App() {
-  const [showcase, setShowcase] = useState(true);
+	const [users, setUsers] = useState([]);
+	const [selectedApp, setSelectedApp] = useState('add-user');
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [usernameError, setUsernameError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
-  const [Addmessagesucessfully, setAddmessagesuccessfully] = useState(false);
-  const [list, setList] = useState([]);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!username) {
-      setUsernameError(true);
-    }
-    if (!password) {
-      setPasswordError(true);
-    }
+	return (
+		<div
+			style={{
+				width: '1100px',
+				margin: '0 auto',
+				display: 'flex',
+				// justifyContent: 'center',
+				alignItems: 'center',
+				flexDirection: 'column',
+				padding: '30px 0',
+			}}
+		>
+			<Navbar setSelectedApp={setSelectedApp} />
 
-    if (username && password) {
-      setList(() => [
-        ...list,
-        {
-          username: username,
-          password: password,
-        },
-      ]);
-
-      setAddmessagesuccessfully(true);
-      setTimeout(() => {
-        setAddmessagesuccessfully(false);
-      }, 2000);
-    }
-  };
-  return (
-    <>
-      {showcase ? (
-        <LoginForm
-          username={username}
-          setUsername={setUsername}
-          password={password}
-          setPassword={setPassword}
-          usernameError={usernameError}
-          setUsernameError={setUsernameError}
-          passwordError={passwordError}
-          setPasswordError={setPasswordError}
-          Addmessagesucessfully={Addmessagesucessfully}
-          handleSubmit={handleSubmit}
-        />
-      ) : (
-        <List List={list} />
-      )}
-
-      <Navbar setShowcase={setShowcase} />
-    </>
-  );
+			<div style={{ marginTop: '20px' }}>
+				{selectedApp === 'add-user' && (
+					<AddUser setUsers={setUsers} users={users} />
+				)}
+				{selectedApp === 'list-user' && <ListUser users={users} />}
+			</div>
+		</div>
+	);
 }
 
 export default App;
