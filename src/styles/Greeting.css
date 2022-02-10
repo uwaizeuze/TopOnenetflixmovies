@@ -1,0 +1,15 @@
+.section--container {
+  background-color: #ff4500ab;
+  height: 100px;
+  width: 500px;
+  box-shadow: 0px 2px 3px rgb(0 0 0 / 30%);
+  border-radius: 4px;
+  padding: 35px;
+}
+.section--title {
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+}
